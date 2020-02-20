@@ -1,10 +1,3 @@
-'''
-Created by Nicolas Quach, July 16 2019
-Script to anonymize DICOM files. Scrubs metadata of private health information
-and blacks out the top banner containing the patient's name/information.
-
-Adjust crop_pixels to the size of this banner. Assumes that the banner is at the top of the echo file.
-'''
 import os
 import numpy as np
 import pydicom as dcm
