@@ -21,8 +21,9 @@ def parse_name(old_name):
 	mouse_number = old_name[29:31]
 	return [cage_number, mouse_number]
 
-def change_name(ds, save_direc, new_name):
-	ds.PatientName = new_name
+def change_name(ds, save_direc, cage_number, mouse_number, dicom_count):
+	ds.PatientName = mouse_number + '_' + str(cage_number)
+	new_name =  mouse_number + '_' + str(cage_number) + '_' + str(dicom_count + 1)
 	ds.PixelData = ds.pixel_array.tobytes()
 	dcm.filewriter.write_file(os.path.join(save_direc, new_name + '.dcm'), ds)
 
@@ -42,7 +43,7 @@ def organize(data_direc, new_direc):
 			dicom_count = count_dicoms(mouse_direc)
 			new_name =  mouse_number + '_' + str(cage_number) + '_' + str(dicom_count + 1)
 			print('Renaming to ' + new_name + '.dcm ...')
-			change_name(ds, mouse_direc, new_name)
+			change_name(ds, mouse_direc, cage_number, mouse_number, dicom_count)
 
 
 ########################################################################################################
