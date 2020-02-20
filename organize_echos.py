@@ -7,12 +7,8 @@ Adjust crop_pixels to the size of this banner. Assumes that the banner is at the
 '''
 import os
 import numpy as np
-import matplotlib.pyplot as plt
 import pydicom as dcm
 from pydicom.encaps import encapsulate
-import multiprocessing
-import time
-import csv
 
 def safe_makedir(path):
 	if not os.path.exists(path):
